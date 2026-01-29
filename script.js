@@ -61,55 +61,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission
+// Form submission - FormSubmit feedback
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Pega os dados do formulário
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-    const mensagem = document.getElementById('mensagem').value;
-
-    // Monta o corpo do email
-    const emailBody = `
-Nome: ${nome}
-Email: ${email}
-Telefone: ${telefone}
-
-Mensagem:
-${mensagem}
-    `.trim();
-
-    // Monta o link mailto
-    const mailtoLink = `mailto:gonextsolutions.contato@gmail.com?subject=Contato do Site - ${nome}&body=${encodeURIComponent(emailBody)}`;
-
-    // Botão de feedback
+    // Feedback visual ao enviar
     const button = contactForm.querySelector('button[type="submit"]');
     const originalText = button.textContent;
-    button.textContent = 'Abrindo email...';
+    button.textContent = 'Enviando...';
     button.disabled = true;
 
-    // Abre o cliente de email
-    window.location.href = mailtoLink;
-
-    // Feedback e reset
-    setTimeout(() => {
-        button.textContent = '✓ Email aberto!';
-        button.style.background = 'var(--secondary-color)';
-
-        // Reseta o formulário
-        contactForm.reset();
-
-        // Volta ao normal após 3 segundos
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.disabled = false;
-            button.style.background = '';
-        }, 3000);
-    }, 500);
+    // O FormSubmit cuida do envio, apenas mostramos feedback
+    // O formulário será submetido normalmente (sem preventDefault)
 });
 
 // Intersection Observer para animações ao scroll

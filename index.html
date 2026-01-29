@@ -388,7 +388,13 @@
                         <p>Atendemos todo o Brasil</p>
                     </div>
                 </div>
-                <form class="contato-form" id="contactForm">
+                <form class="contato-form" id="contactForm" action="https://formsubmit.co/gonextsolutions.contato@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="Nova mensagem do site GoNext Tecnologia">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+
                     <div class="form-group">
                         <label for="nome">Nome *</label>
                         <input type="text" id="nome" name="nome" required>
