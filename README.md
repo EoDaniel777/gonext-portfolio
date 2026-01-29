@@ -4,26 +4,26 @@ Site institucional da GoNext Tecnologia, empresa de desenvolvimento de soluçõe
 
 ## 🚀 Sobre o Projeto
 
-Este é um site estático desenvolvido para apresentar os serviços, cases de sucesso e equipe da GoNext Tecnologia. O site é responsivo, moderno e otimizado para SEO.
+Este é um site estático desenvolvido para apresentar os serviços, cases de sucesso e equipe da GoNext Tecnologia. O site é totalmente responsivo, moderno, elegante e otimizado para SEO, com design profissional e ícones interativos.
 
 ## 🛠️ Tecnologias Utilizadas
 
 - HTML5
-- CSS3 (com variáveis CSS)
-- JavaScript (Vanilla)
+- CSS3 (com variáveis CSS e Media Queries avançadas)
+- JavaScript (Vanilla ES6+)
 - Google Fonts (Inter)
+- Font Awesome 6.5.1 (ícones profissionais)
+- Devicon 2.15.1 (ícones de tecnologias de programação)
 
 ## 📁 Estrutura do Projeto
 
 ```
-portifolio/
+gonext-portfolio/
 ├── index.html          # Página principal
 ├── styles.css          # Estilos do site
 ├── script.js           # Interações e animações
 ├── docs/               # Recursos
-│   ├── equipe.png      # Foto da equipe
-│   ├── case1.jpg       # Imagem do case 1 (adicionar)
-│   └── case2.jpg       # Imagem do case 2 (adicionar)
+│   └── logo.png        # Logo da empresa GoNext
 └── README.md           # Este arquivo
 ```
 
@@ -51,18 +51,14 @@ Você pode editar o conteúdo diretamente no arquivo `index.html`:
 - **Cases**: Seção `#cases`
 - **Sobre**: Seção `#sobre`
 
-### Imagens dos Cases
+### Logo
 
-Para adicionar as imagens dos seus projetos:
+A logo da empresa está localizada em `docs/logo.png` e é utilizada:
+- No cabeçalho (navbar)
+- Na seção hero (com animação flutuante)
+- No rodapé (footer)
 
-1. Adicione as imagens na pasta `docs/` com os nomes:
-   - `case1.jpg` - Projeto Barbearia
-   - `case2.jpg` - Projeto Clínica
-
-2. As imagens serão carregadas automaticamente
-
-Formatos recomendados: JPG, PNG
-Tamanho recomendado: 1200x800px (proporção 3:2)
+Para substituir a logo, basta substituir o arquivo `docs/logo.png` mantendo o mesmo nome.
 
 ## 🌐 Deploy no GitHub Pages
 
@@ -95,13 +91,19 @@ git push -u origin main
 
 ## 📱 Recursos
 
-- ✅ Design responsivo (mobile, tablet, desktop)
+- ✅ Design responsivo profissional (mobile, tablet, desktop)
+- ✅ Ícones interativos de tecnologias (Font Awesome + Devicon)
 - ✅ Navegação suave entre seções
-- ✅ Animações ao scroll
-- ✅ Menu mobile funcional
+- ✅ Animações ao scroll e hover effects
+- ✅ Menu mobile funcional com hamburger animado
+- ✅ Logo com animação flutuante na hero section
+- ✅ Cards de tecnologias com hover effects
+- ✅ Badges interativos nos cases de sucesso
+- ✅ Design minimalista da equipe com links sociais
 - ✅ Formulário de contato
 - ✅ SEO otimizado
 - ✅ Performance otimizada
+- ✅ Breakpoints avançados (1400px, 1200px, 968px, 768px, 640px, 479px, 375px)
 
 ## 🎯 Seções do Site
 
@@ -113,17 +115,25 @@ git push -u origin main
 
 ## 📝 Próximos Passos
 
-- [ ] Adicionar imagens dos cases de sucesso
+- [x] Design profissional com ícones interativos
+- [x] Responsividade completa para todos os dispositivos
+- [x] Cards de tecnologias e cases otimizados
 - [ ] Integrar formulário de contato com backend/serviço de email
 - [ ] Adicionar Google Analytics
 - [ ] Configurar domínio personalizado (opcional)
 - [ ] Adicionar mais cases conforme novos projetos
 
-## 🤝 Contato
+## 👥 Equipe
 
 **GoNext Tecnologia**
+- **Daniel Alisom** - CIO & Backend Developer - [@EoDaniel777](https://github.com/EoDaniel777)
+- **Bruno Santiago** - Frontend Developer - [@B-Evil](https://github.com/B-Evil)
+- **Thiago Santiago** - Frontend Developer - [@Thaysantzs](https://github.com/Thaysantzs)
+
+## 🤝 Contato
+
 - Email: contato@gonext.com.br
-- Desenvolvido por: Daniel e equipe
+- Website: [gonext-portfolio](https://eodaniel777.github.io/gonext-portfolio/)
 
 ---
 
