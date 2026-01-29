@@ -68,26 +68,36 @@ contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Pega os dados do formulário
-    const formData = {
-        nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        telefone: document.getElementById('telefone').value,
-        mensagem: document.getElementById('mensagem').value
-    };
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const mensagem = document.getElementById('mensagem').value;
 
-    // Aqui você pode integrar com um serviço de email ou backend
-    // Por enquanto, vamos apenas mostrar uma mensagem de sucesso
+    // Monta o corpo do email
+    const emailBody = `
+Nome: ${nome}
+Email: ${email}
+Telefone: ${telefone}
 
-    console.log('Dados do formulário:', formData);
+Mensagem:
+${mensagem}
+    `.trim();
 
-    // Simula envio
+    // Monta o link mailto
+    const mailtoLink = `mailto:gonextsolutions.contato@gmail.com?subject=Contato do Site - ${nome}&body=${encodeURIComponent(emailBody)}`;
+
+    // Botão de feedback
     const button = contactForm.querySelector('button[type="submit"]');
     const originalText = button.textContent;
-    button.textContent = 'Enviando...';
+    button.textContent = 'Abrindo email...';
     button.disabled = true;
 
+    // Abre o cliente de email
+    window.location.href = mailtoLink;
+
+    // Feedback e reset
     setTimeout(() => {
-        button.textContent = '✓ Mensagem Enviada!';
+        button.textContent = '✓ Email aberto!';
         button.style.background = 'var(--secondary-color)';
 
         // Reseta o formulário
@@ -99,7 +109,7 @@ contactForm.addEventListener('submit', (e) => {
             button.disabled = false;
             button.style.background = '';
         }, 3000);
-    }, 1500);
+    }, 500);
 });
 
 // Intersection Observer para animações ao scroll
@@ -165,6 +175,55 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
+
+// Popup Modal
+const popup = document.getElementById('promotionPopup');
+const closePopupBtn = document.getElementById('closePopup');
+let popupShown = false;
+
+// Verifica se o popup já foi mostrado
+const hasSeenPopup = localStorage.getItem('gonext_popup_shown');
+
+// Função para mostrar o popup
+function showPopup() {
+    if (!hasSeenPopup && !popupShown) {
+        popup.classList.add('active');
+        popupShown = true;
+        document.body.style.overflow = 'hidden'; // Previne scroll quando popup está aberto
+    }
+}
+
+// Função para fechar o popup
+function closePopup() {
+    popup.classList.remove('active');
+    document.body.style.overflow = ''; // Restaura scroll
+    localStorage.setItem('gonext_popup_shown', 'true'); // Marca como visto
+}
+
+// Evento de scroll para mostrar o popup
+let scrollThreshold = 500; // Pixels de scroll antes de mostrar o popup
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > scrollThreshold && !hasSeenPopup && !popupShown) {
+        showPopup();
+    }
+});
+
+// Fechar popup ao clicar no botão
+closePopupBtn.addEventListener('click', closePopup);
+
+// Fechar popup ao clicar fora dele
+popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        closePopup();
+    }
+});
+
+// Fechar popup com tecla ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('active')) {
+        closePopup();
+    }
+});
 
 // Mensagem de boas-vindas no console
 console.log('%c🚀 GoNext Tecnologia', 'font-size: 20px; color: #667eea; font-weight: bold;');

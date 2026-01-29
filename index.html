@@ -175,10 +175,7 @@
             <div class="cases-grid">
                 <div class="case-card">
                     <div class="case-image-placeholder">
-                        <div class="case-placeholder">
-                            <i class="fas fa-cut" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                            <h4>Barbearia Premium</h4>
-                        </div>
+                        <img src="docs/barber.png" alt="Sistema de Agendamento - Barbearia Premium" class="case-image">
                     </div>
                     <div class="case-content">
                         <h3 class="case-title">Sistema de Agendamento - Barbearia Premium</h3>
@@ -231,22 +228,19 @@
 
                 <div class="case-card">
                     <div class="case-image-placeholder">
-                        <div class="case-placeholder">
-                            <i class="fas fa-clinic-medical" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                            <h4>Clínica Médica</h4>
-                        </div>
+                        <img src="docs/yoga.png" alt="Sistema de Agendamento - Clínica de Yoga e Pilates" class="case-image">
                     </div>
                     <div class="case-content">
-                        <h3 class="case-title">Sistema de Agendamento - Clínica Médica</h3>
+                        <h3 class="case-title">Sistema de Agendamento - Clínica de Yoga e Pilates</h3>
                         <p class="case-description">
-                            Plataforma completa para gestão de consultas médicas com múltiplos profissionais.
-                            Sistema de agendamento inteligente, gestão de prontuários, integração com calendário
+                            Plataforma completa para gestão de aulas e sessões com múltiplos instrutores.
+                            Sistema de agendamento inteligente, gestão de horários e turmas, integração com calendário
                             e notificações automáticas via email/SMS. Arquitetura escalável desenvolvida em Go
-                            com interface moderna e responsiva.
+                            com interface moderna e responsiva. Em breve disponível também para clínicas médicas.
                         </p>
                         <div class="case-features">
-                            <div class="feature-item"><i class="fas fa-user-md"></i> Multi-profissionais</div>
-                            <div class="feature-item"><i class="fas fa-file-medical"></i> Prontuário Digital</div>
+                            <div class="feature-item"><i class="fas fa-users"></i> Multi-instrutores</div>
+                            <div class="feature-item"><i class="fas fa-calendar-alt"></i> Gestão de Turmas</div>
                             <div class="feature-item"><i class="fas fa-bell"></i> Lembretes Automáticos</div>
                             <div class="feature-item"><i class="fas fa-chart-bar"></i> Relatórios</div>
                         </div>
@@ -379,17 +373,17 @@
             <div class="contato-content">
                 <div class="contato-info">
                     <div class="info-card">
-                        <div class="info-icon">📧</div>
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <h3>Email</h3>
-                        <p>contato@gonext.com.br</p>
+                        <p>gonextsolutions.contato@gmail.com</p>
                     </div>
                     <div class="info-card">
-                        <div class="info-icon">💬</div>
+                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
                         <h3>WhatsApp</h3>
-                        <p>(00) 00000-0000</p>
+                        <p>(61) 8426-7420</p>
                     </div>
                     <div class="info-card">
-                        <div class="info-icon">📍</div>
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <h3>Localização</h3>
                         <p>Atendemos todo o Brasil</p>
                     </div>
@@ -454,6 +448,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Popup Modal -->
+    <div id="promotionPopup" class="popup-overlay">
+        <div class="popup-container">
+            <button class="popup-close" id="closePopup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-content">
+                <img src="docs/popup.png" alt="Promoção GoNext" class="popup-image">
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
