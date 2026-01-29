@@ -75,6 +75,44 @@ contactForm.addEventListener('submit', (e) => {
     // O formulário será submetido normalmente (sem preventDefault)
 });
 
+// Success Message Modal
+const successMessage = document.getElementById('successMessage');
+const closeSuccessBtn = document.getElementById('closeSuccess');
+
+// Verifica se há parâmetro de sucesso na URL
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('success') === 'true') {
+    // Mostra o modal de sucesso
+    successMessage.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Remove o parâmetro da URL sem recarregar a página
+    const newUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
+}
+
+// Fechar modal de sucesso
+function closeSuccessMessage() {
+    successMessage.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+closeSuccessBtn.addEventListener('click', closeSuccessMessage);
+
+// Fechar com ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && successMessage.classList.contains('active')) {
+        closeSuccessMessage();
+    }
+});
+
+// Fechar clicando fora
+successMessage.addEventListener('click', (e) => {
+    if (e.target === successMessage) {
+        closeSuccessMessage();
+    }
+});
+
 // Intersection Observer para animações ao scroll
 const observerOptions = {
     threshold: 0.1,
