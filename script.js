@@ -3,11 +3,15 @@ const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
 
 mobileMenuToggle.addEventListener('click', () => {
+    const isActive = navMenu.classList.contains('active');
     navMenu.classList.toggle('active');
+
+    // Atualiza aria-expanded para acessibilidade
+    mobileMenuToggle.setAttribute('aria-expanded', !isActive);
 
     // Anima o botão hambúrguer
     const spans = mobileMenuToggle.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
+    if (!isActive) {
         spans[0].style.transform = 'rotate(45deg) translateY(10px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
@@ -224,6 +228,276 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && popup.classList.contains('active')) {
         closePopup();
     }
+});
+
+// Toggle de Preços (Assinatura/Compra)
+const pricingToggle = document.getElementById('pricingToggle');
+const labelAssinatura = document.getElementById('labelAssinatura');
+const labelCompra = document.getElementById('labelCompra');
+const priceValues = document.querySelectorAll('.price-value');
+const pricePeriods = document.querySelectorAll('.price-period');
+
+// Inicializa labels
+labelAssinatura.classList.add('active');
+
+pricingToggle.addEventListener('change', function() {
+    const isCompra = this.checked;
+
+    // Atualiza labels
+    if (isCompra) {
+        labelAssinatura.classList.remove('active');
+        labelCompra.classList.add('active');
+    } else {
+        labelAssinatura.classList.add('active');
+        labelCompra.classList.remove('active');
+    }
+
+    // Atualiza preços
+    priceValues.forEach(priceElement => {
+        const monthlyPrice = priceElement.getAttribute('data-monthly');
+        const onetimePrice = priceElement.getAttribute('data-onetime');
+
+        if (isCompra) {
+            priceElement.textContent = onetimePrice;
+        } else {
+            priceElement.textContent = monthlyPrice;
+        }
+    });
+
+    // Atualiza período
+    pricePeriods.forEach(period => {
+        if (isCompra) {
+            period.textContent = ' única';
+        } else {
+            period.textContent = '/mês';
+        }
+    });
+});
+
+// Event listeners para botões de planos
+document.querySelectorAll('.btn-plan').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const card = this.closest('.pricing-card');
+        const planName = card.querySelector('.plan-name').textContent;
+        const isCompra = pricingToggle.checked;
+        const tipo = isCompra ? 'Compra Única' : 'Assinatura Mensal';
+
+        // Rola para o formulário de contato
+        const contatoSection = document.getElementById('contato');
+        const offsetTop = contatoSection.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+
+        // Preenche o campo de mensagem
+        const mensagemField = document.getElementById('mensagem');
+        mensagemField.value = `Olá! Tenho interesse no plano ${planName} - ${tipo}. Gostaria de mais informações.`;
+        mensagemField.focus();
+
+        console.log(`Interesse no plano: ${planName} - ${tipo}`);
+    });
+});
+
+// Função para formatar valores em Real Brasileiro
+function formatarReal(valor) {
+    return valor.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+// Calculadora de Preço
+const BASE_PRICE = 59.90;
+const ONETIME_MULTIPLIER = 45; // Reduzido para não passar muito do plano Pro
+
+function updateCalculator() {
+    let totalMonthly = BASE_PRICE;
+    let selectedFeatures = [
+        'Agendamento Online',
+        'Firebase Authentication',
+        'Painel Administrativo'
+    ];
+
+    // Coleta funcionalidades adicionais
+    const features = document.querySelectorAll('input[name="feature"]:checked:not(:disabled)');
+    features.forEach(feature => {
+        totalMonthly += parseFloat(feature.value);
+        selectedFeatures.push(feature.getAttribute('data-name'));
+    });
+
+    // Capacidade
+    const capacity = document.querySelector('input[name="capacity"]:checked');
+    if (capacity) {
+        totalMonthly += parseFloat(capacity.value);
+        selectedFeatures.push(capacity.getAttribute('data-name'));
+    }
+
+    // Hospedagem
+    const hosting = document.querySelector('input[name="hosting"]:checked');
+    if (hosting) {
+        const hostingValue = parseFloat(hosting.value);
+        if (hostingValue > 0) {
+            totalMonthly += hostingValue;
+            selectedFeatures.push(hosting.getAttribute('data-name'));
+        }
+    }
+
+    // Calcula valor único
+    const totalOnetime = totalMonthly * ONETIME_MULTIPLIER;
+
+    // Atualiza interface com formatação brasileira
+    document.getElementById('totalMonthly').textContent = `R$ ${formatarReal(totalMonthly)}`;
+    document.getElementById('totalOnetime').textContent = `R$ ${formatarReal(totalOnetime)}`;
+
+    // Atualiza lista de funcionalidades
+    const featuresList = document.getElementById('selectedFeatures');
+    featuresList.innerHTML = selectedFeatures.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
+
+    // Atualiza extras
+    const extrasContainer = document.getElementById('extrasContainer');
+    const extras = [];
+
+    features.forEach(feature => {
+        extras.push({
+            name: feature.getAttribute('data-name'),
+            value: parseFloat(feature.value)
+        });
+    });
+
+    if (capacity && parseFloat(capacity.value) > 0) {
+        extras.push({
+            name: capacity.getAttribute('data-name'),
+            value: parseFloat(capacity.value)
+        });
+    }
+
+    if (hosting && parseFloat(hosting.value) > 0) {
+        extras.push({
+            name: hosting.getAttribute('data-name'),
+            value: parseFloat(hosting.value)
+        });
+    }
+
+    if (extras.length > 0) {
+        extrasContainer.innerHTML = extras.map(extra =>
+            `<div class="extra-line">
+                <span>${extra.name}:</span>
+                <strong>+R$ ${formatarReal(extra.value)}</strong>
+            </div>`
+        ).join('');
+    } else {
+        extrasContainer.innerHTML = '';
+    }
+}
+
+// Event listeners para calculadora
+document.querySelectorAll('.calculadora input[type="checkbox"], .calculadora input[type="radio"]').forEach(input => {
+    input.addEventListener('change', updateCalculator);
+});
+
+// Inicializa calculadora
+if (document.querySelector('.calculadora')) {
+    updateCalculator();
+}
+
+// Chat Widget WhatsApp
+const whatsappButton = document.getElementById('whatsappButton');
+const chatWidget = document.getElementById('chatWidget');
+const chatClose = document.getElementById('chatClose');
+const chatForm = document.getElementById('chatForm');
+const chatWhatsappBtn = document.getElementById('chatWhatsappBtn');
+const chatEmailBtn = document.getElementById('chatEmailBtn');
+
+// Toggle chat widget
+whatsappButton.addEventListener('click', () => {
+    chatWidget.classList.toggle('active');
+});
+
+// Fechar chat
+chatClose.addEventListener('click', () => {
+    chatWidget.classList.remove('active');
+});
+
+// Fechar chat ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!chatWidget.contains(e.target) && !whatsappButton.contains(e.target)) {
+        chatWidget.classList.remove('active');
+    }
+});
+
+// Botão WhatsApp (não submete o formulário)
+chatWhatsappBtn.addEventListener('click', () => {
+    const nome = document.getElementById('chatName').value.trim();
+    const mensagem = document.getElementById('chatMessage').value.trim();
+
+    if (!nome || !mensagem) {
+        alert('Por favor, preencha seu nome e mensagem.');
+        return;
+    }
+
+    const textoCompleto = `Olá! Meu nome é ${nome}.\n\n${mensagem}`;
+    const whatsappUrl = `https://wa.me/5561984267420?text=${encodeURIComponent(textoCompleto)}`;
+
+    // Abre WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Feedback visual
+    chatWhatsappBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+    setTimeout(() => {
+        chatWidget.classList.remove('active');
+        chatForm.reset();
+        chatWhatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp';
+    }, 1500);
+});
+
+// Botão Email (submete o formulário via FormSubmit)
+chatForm.addEventListener('submit', (e) => {
+    // Valida os campos
+    const nome = document.getElementById('chatName').value.trim();
+    const mensagem = document.getElementById('chatMessage').value.trim();
+
+    if (!nome || !mensagem) {
+        e.preventDefault();
+        alert('Por favor, preencha seu nome e mensagem.');
+        return;
+    }
+
+    // Configura o redirect para voltar ao site com parâmetro de sucesso
+    const currentUrl = window.location.href.split('?')[0]; // Remove parâmetros existentes
+    document.getElementById('chatRedirect').value = currentUrl + '?success=true';
+
+    // Feedback visual
+    chatEmailBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    chatEmailBtn.disabled = true;
+
+    // O FormSubmit cuida do envio (não usa preventDefault)
+});
+
+// Nota: A verificação de sucesso do chat já é tratada pelo código
+// do formulário de contato, pois ambos usam o mesmo parâmetro ?success=true
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+
+    question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Fecha todos os outros itens
+        faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle do item atual
+        if (!isActive) {
+            item.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+        }
+    });
 });
 
 // Mensagem de boas-vindas no console

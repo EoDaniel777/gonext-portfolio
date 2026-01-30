@@ -1485,9 +1485,429 @@ section {
     }
 }
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: whatsappPulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes whatsappPulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+    }
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 380px;
+    max-height: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.chat-widget.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+/* Ajustes para telas médias (tablets) */
+@media (max-width: 1024px) {
+    .chat-widget {
+        width: 360px;
+        max-height: 550px;
+        bottom: 100px;
+    }
+}
+
+/* Ajustes para tablets pequenos */
+@media (max-width: 768px) {
+    .chat-widget {
+        width: 340px;
+        max-height: 500px;
+        bottom: 90px;
+        right: 20px;
+    }
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chat-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+    object-fit: contain;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.chat-status {
+    margin: 0;
+    font-size: 0.75rem;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.chat-status i {
+    font-size: 0.5rem;
+    color: #34d058;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.chat-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.chat-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chat-body {
+    padding: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+    background: #f0f2f5;
+}
+
+.chat-welcome {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.chat-bubble {
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-bubble p {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.chat-bubble p:last-of-type {
+    margin-bottom: 0.75rem;
+}
+
+.chat-bubble small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.chat-footer {
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-radius: 0 0 20px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.chat-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.chat-input,
+.chat-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.chat-input:focus,
+.chat-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.chat-textarea {
+    resize: none;
+}
+
+.chat-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chat-btn {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.chat-btn-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+}
+
+.chat-btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.chat-btn-email {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.chat-btn-email:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Chat Widget - Mobile */
+@media (max-width: 640px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.75rem;
+    }
+
+    .chat-widget {
+        bottom: 85px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-height: 70vh;
+        border-radius: 15px;
+    }
+
+    .chat-header {
+        padding: 1rem 1.25rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .chat-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chat-header h4 {
+        font-size: 0.95rem;
+    }
+
+    .chat-body {
+        padding: 1rem;
+    }
+
+    .chat-bubble {
+        padding: 0.875rem 1rem;
+    }
+
+    .chat-footer {
+        padding: 1rem 1.25rem;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .chat-input,
+    .chat-textarea {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .chat-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 400px) {
+    .chat-widget {
+        bottom: 80px;
+        max-height: 65vh;
+    }
+
+    .chat-header {
+        padding: 0.875rem 1rem;
+    }
+
+    .chat-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-body {
+        padding: 0.875rem;
+    }
+
+    .chat-footer {
+        padding: 0.875rem 1rem;
+    }
+
+    .chat-btn {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.85rem;
+    }
+
+    .chat-btn i {
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility - Focus Styles */
+*:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 0 0 8px 0;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
 /* Smooth Scroll */
 html {
     scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /* Animations */
@@ -1504,4 +1924,826 @@ html {
 
 .fade-in {
     animation: fadeIn 0.6s ease-out;
+}
+
+/* Seção de Preços */
+.precos {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.precos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+    opacity: 0.3;
+}
+
+.precos .container {
+    position: relative;
+    z-index: 1;
+}
+
+.precos .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.precos .section-title,
+.precos .section-subtitle {
+    color: white;
+}
+
+/* Toggle Assinatura/Compra */
+.pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.toggle-label {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-label.active {
+    opacity: 1;
+}
+
+.toggle-label:not(.active) {
+    opacity: 0.6;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* Grid de Preços */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Cards de Preço */
+.pricing-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-card.popular {
+    border: 3px solid #fbbf24;
+    transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.plan-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.plan-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 0.5rem;
+}
+
+.price-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--text-light);
+    align-self: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.plan-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.pricing-features {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feature-item:last-of-type {
+    border-bottom: none;
+}
+
+.feature-item i {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.feature-bonus {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.feature-bonus i {
+    color: #fbbf24;
+    font-size: 1.1rem;
+}
+
+.btn-plan {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.pricing-card.popular .btn-plan {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.pricing-card.popular .btn-plan:hover {
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+}
+
+/* Informações Adicionais */
+.pricing-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .pricing-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.info-box i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.info-box p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.info-box strong {
+    color: var(--primary-color);
+}
+
+.info-box.info-note {
+    background: white;
+    border-left: 4px solid #fbbf24;
+}
+
+.info-box.info-stack {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.info-box.info-stack h4 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stack-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.stack-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: 10px;
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.stack-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    background: white;
+}
+
+.stack-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.stack-item span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* Responsive Preços */
+@media (max-width: 768px) {
+    .precos {
+        padding: 3rem 0;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+
+    .pricing-card.popular:hover {
+        transform: translateY(-10px);
+    }
+
+    .pricing-toggle {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .toggle-label {
+        font-size: 1rem;
+    }
+
+    .plan-name {
+        font-size: 1.5rem;
+    }
+
+    .price-value {
+        font-size: 2.5rem;
+    }
+
+    .pricing-info {
+        grid-template-columns: 1fr;
+    }
+
+    .info-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* Seção FAQ */
+.faq {
+    padding: 5rem 0;
+    background: var(--bg-light);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: white;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.faq-question i {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 2rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 2rem 1.5rem 2rem;
+}
+
+.faq-answer p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.faq-answer strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Responsive FAQ */
+@media (max-width: 768px) {
+    .faq {
+        padding: 3rem 0;
+    }
+
+    .faq-question {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .faq-question i {
+        font-size: 0.8rem;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 0 1.5rem 1.25rem 1.5rem;
+    }
+}
+
+/* Calculadora de Preço */
+.calculadora {
+    padding: 5rem 0;
+    background: var(--bg-white);
+}
+
+.calculadora-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.calculadora-options {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.option-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+.option-category h3 {
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.option-category h3 i {
+    color: var(--primary-color);
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.option-item {
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.option-item input[type="checkbox"],
+.option-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.option-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 1rem;
+    background: var(--bg-light);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.option-label i {
+    font-size: 1.75rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.option-label span {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.option-label small {
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.option-item input:checked + .option-label {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-color: var(--primary-color);
+}
+
+.option-item input:checked + .option-label i {
+    color: var(--primary-color);
+}
+
+.option-item input:disabled + .option-label {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.option-label:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.option-item input:disabled + .option-label:hover {
+    transform: none;
+}
+
+/* Calculadora Result */
+.calculadora-result {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.result-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    color: white;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-header i {
+    font-size: 2rem;
+}
+
+.result-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.result-pricing {
+    margin-bottom: 1.5rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+}
+
+.result-item.extras {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.result-item.extras .extra-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.result-divider {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 1rem 0;
+}
+
+.result-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.result-total span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.result-total strong {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.result-onetime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.result-onetime span {
+    font-size: 0.95rem;
+}
+
+.result-onetime strong {
+    font-size: 1.25rem;
+}
+
+.result-features {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.result-features h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.result-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.result-features i {
+    color: #10b981;
+    font-size: 1rem;
+}
+
+.btn-result {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-result:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Calculadora */
+@media (max-width: 1024px) {
+    .calculadora-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .calculadora-result {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculadora {
+        padding: 3rem 0;
+    }
+
+    .option-category {
+        padding: 1.5rem;
+    }
+
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: 1.5rem;
+    }
+
+    .result-total strong {
+        font-size: 1.75rem;
+    }
 }

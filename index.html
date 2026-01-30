@@ -3,11 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GoNext Tecnologia - Soluções tecnológicas inovadoras para barbearias, clínicas e diversos segmentos">
-    <title>GoNext Tecnologia | Soluções Tecnológicas Sob Medida</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GoNext Tecnologia desenvolve sistemas SaaS de agendamento para barbearias, clínicas e consultórios. Planos a partir de R$ 59,90/mês com Firebase, Go, automação com IA e WhatsApp. Deploy e domínio grátis.">
+    <meta name="keywords" content="sistema agendamento, SaaS agendamento, sistema barbearia, sistema clínica, agendamento online, GoNext, Go Golang, Firebase, automação IA">
+    <meta name="author" content="GoNext Tecnologia">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eodaniel777.github.io/gonext-portfolio/">
+    <meta property="og:title" content="GoNext Tecnologia | Sistemas SaaS de Agendamento">
+    <meta property="og:description" content="Desenvolvemos sistemas de agendamento para barbearias, clínicas e consultórios. Planos a partir de R$ 59,90/mês com IA, WhatsApp e automação.">
+    <meta property="og:image" content="https://eodaniel777.github.io/gonext-portfolio/docs/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="GoNext Tecnologia">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://eodaniel777.github.io/gonext-portfolio/">
+    <meta name="twitter:title" content="GoNext Tecnologia | Sistemas SaaS de Agendamento">
+    <meta name="twitter:description" content="Desenvolvemos sistemas de agendamento para barbearias, clínicas e consultórios. Planos a partir de R$ 59,90/mês com IA, WhatsApp e automação.">
+    <meta name="twitter:image" content="https://eodaniel777.github.io/gonext-portfolio/docs/logo.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://eodaniel777.github.io/gonext-portfolio/">
+
+    <title>GoNext Tecnologia | Sistemas SaaS de Agendamento para Clínicas e Barbearias</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="docs/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="docs/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="docs/logo.png">
+
+    <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -26,10 +62,12 @@
                     <a href="#home" class="nav-link">Início</a>
                     <a href="#sobre" class="nav-link">Sobre</a>
                     <a href="#cases" class="nav-link">Cases</a>
-                    <a href="#equipe" class="nav-link">Equipe</a>
+                    <a href="#precos" class="nav-link">Preços</a>
+                    <a href="#calculadora" class="nav-link">Calculadora</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
                     <a href="#contato" class="nav-link btn-primary-nav">Contato</a>
                 </div>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -51,8 +89,8 @@
                         para barbearias, clínicas e consultórios. Transformamos suas ideias em tecnologia.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#contato" class="btn btn-primary">Solicitar Demonstração</a>
-                        <a href="#cases" class="btn btn-secondary">Ver Cases de Sucesso</a>
+                        <a href="#contato" class="btn btn-primary" aria-label="Solicitar uma demonstração do sistema">Solicitar Demonstração</a>
+                        <a href="#cases" class="btn btn-secondary" aria-label="Ver nossos casos de sucesso">Ver Cases de Sucesso</a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -278,6 +316,450 @@
         </div>
     </section>
 
+    <!-- Preços -->
+    <section id="precos" class="precos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Planos e Preços</h2>
+                <p class="section-subtitle">Soluções escaláveis para o seu negócio crescer</p>
+            </div>
+
+            <!-- Toggle Assinatura/Compra -->
+            <div class="pricing-toggle">
+                <span class="toggle-label" id="labelAssinatura">Assinatura Mensal</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label" id="labelCompra">Compra Única</span>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Plano Básico -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Básico</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="price-value" data-monthly="59,90" data-onetime="4.000">59,90</span>
+                            <span class="price-period">/mês</span>
+                        </div>
+                        <p class="plan-description">Ideal para pequenos negócios começarem</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Agendamento Online</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Gestão de Horários</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Painel Administrativo</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Até 2 Profissionais</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Firebase Authentication</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Notificações Internas</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Relatórios Básicos</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Suporte por Email</div>
+                    </div>
+                    <button class="btn-plan">Começar Agora</button>
+                </div>
+
+                <!-- Plano Plus -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Mais Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Plus</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="price-value" data-monthly="149,90" data-onetime="8.500">149,90</span>
+                            <span class="price-period">/mês</span>
+                        </div>
+                        <p class="plan-description">Para negócios em crescimento</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Tudo do Plano Básico</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Até 5 Profissionais</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> PDV/Sistema de Comandas</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Gestão Financeira Completa</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Relatórios Avançados</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Suporte Prioritário</div>
+                        <div class="feature-bonus"><i class="fas fa-gift"></i> Deploy Grátis</div>
+                        <div class="feature-bonus"><i class="fas fa-gift"></i> Domínio Grátis (1 ano)</div>
+                    </div>
+                    <button class="btn-plan">Começar Agora</button>
+                </div>
+
+                <!-- Plano Pro -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Pro</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="price-value" data-monthly="349,90" data-onetime="18.000">349,90</span>
+                            <span class="price-period">/mês</span>
+                        </div>
+                        <p class="plan-description">Solução completa e inteligente</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Tudo do Plano Plus</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Profissionais Ilimitados</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Multi-filiais</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Integração WhatsApp</div>
+                        <div class="feature-item"><i class="fas fa-robot"></i> IA + Automação (n8n + Evo API)</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Customização Visual (Logo, Fontes)</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Editor de Imagens no Painel</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Firebase Database</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Backup Automático</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Suporte 24/7</div>
+                        <div class="feature-bonus"><i class="fas fa-gift"></i> Deploy Grátis</div>
+                        <div class="feature-bonus"><i class="fas fa-gift"></i> Domínio Grátis (1 ano)</div>
+                    </div>
+                    <button class="btn-plan">Começar Agora</button>
+                </div>
+            </div>
+
+            <div class="pricing-info">
+                <div class="info-box info-note">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>Observação:</strong> Plano Básico não inclui hospedagem e domínio. Planos Plus e Pro incluem deploy e domínio grátis por 1 ano.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-briefcase"></i>
+                    <p><strong>Especialidade:</strong> Sistemas SaaS de agendamento para barbearias, clínicas, consultórios e diversos segmentos com agendamento</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-laptop-code"></i>
+                    <p><strong>Sites Personalizados:</strong> Desenvolvemos sites totalmente sob medida com funcionalidades específicas do seu negócio</p>
+                </div>
+                <div class="info-box info-stack">
+                    <h4><i class="fas fa-layer-group"></i> Stack Tecnológica</h4>
+                    <div class="stack-icons">
+                        <div class="stack-item">
+                            <i class="devicon-go-original-wordmark"></i>
+                            <span>Go + Gin</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-javascript-plain"></i>
+                            <span>JavaScript ES6+</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-html5-plain"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-css3-plain"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-sqlite-plain"></i>
+                            <span>SQLite</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-postgresql-plain"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="stack-item">
+                            <i class="devicon-firebase-plain"></i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Preço -->
+    <section id="calculadora" class="calculadora">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Calculadora de Preço</h2>
+                <p class="section-subtitle">Monte seu sistema personalizado e veja o investimento</p>
+            </div>
+            <div class="calculadora-content">
+                <div class="calculadora-options">
+                    <div class="option-category">
+                        <h3><i class="fas fa-layer-group"></i> Funcionalidades Base</h3>
+                        <div class="option-grid">
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="100" data-name="Agendamento Online" checked disabled>
+                                <span class="option-label">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Agendamento Online</span>
+                                    <small>Incluso</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="100" data-name="Firebase Auth" checked disabled>
+                                <span class="option-label">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Firebase Auth</span>
+                                    <small>Incluso</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="100" data-name="Painel Admin" checked disabled>
+                                <span class="option-label">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Painel Admin</span>
+                                    <small>Incluso</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-category">
+                        <h3><i class="fas fa-plus-circle"></i> Recursos Adicionais</h3>
+                        <div class="option-grid">
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="50" data-name="PDV/Comandas">
+                                <span class="option-label">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                    <span>PDV/Comandas</span>
+                                    <small>+R$ 50/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="40" data-name="Gestão Financeira">
+                                <span class="option-label">
+                                    <i class="fas fa-coins"></i>
+                                    <span>Gestão Financeira</span>
+                                    <small>+R$ 40/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="80" data-name="WhatsApp Integration">
+                                <span class="option-label">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                    <small>+R$ 80/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="120" data-name="IA + Automação">
+                                <span class="option-label">
+                                    <i class="fas fa-brain"></i>
+                                    <span>IA + Automação</span>
+                                    <small>+R$ 120/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="60" data-name="Customização Visual">
+                                <span class="option-label">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>Customização Visual</span>
+                                    <small>+R$ 60/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="feature" value="50" data-name="Multi-filiais">
+                                <span class="option-label">
+                                    <i class="fas fa-store-alt"></i>
+                                    <span>Multi-filiais</span>
+                                    <small>+R$ 50/mês</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-category">
+                        <h3><i class="fas fa-users"></i> Capacidade</h3>
+                        <div class="option-grid">
+                            <label class="option-item">
+                                <input type="radio" name="capacity" value="0" data-name="Até 2 profissionais" checked>
+                                <span class="option-label">
+                                    <i class="fas fa-user"></i>
+                                    <span>Até 2 profissionais</span>
+                                    <small>Base</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="capacity" value="50" data-name="Até 5 profissionais">
+                                <span class="option-label">
+                                    <i class="fas fa-users"></i>
+                                    <span>Até 5 profissionais</span>
+                                    <small>+R$ 50/mês</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="capacity" value="100" data-name="Ilimitado">
+                                <span class="option-label">
+                                    <i class="fas fa-infinity"></i>
+                                    <span>Ilimitado</span>
+                                    <small>+R$ 100/mês</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-category">
+                        <h3><i class="fas fa-server"></i> Hospedagem</h3>
+                        <div class="option-grid">
+                            <label class="option-item">
+                                <input type="radio" name="hosting" value="0" data-name="Sem hospedagem" checked>
+                                <span class="option-label">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>Sem hospedagem</span>
+                                    <small>Você gerencia</small>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="hosting" value="30" data-name="Hospedagem + Domínio">
+                                <span class="option-label">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Hospedagem + Domínio</span>
+                                    <small>+R$ 30/mês</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculadora-result">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Seu Investimento</h3>
+                        </div>
+                        <div class="result-pricing">
+                            <div class="result-item">
+                                <span>Plano Base:</span>
+                                <strong>R$ 59,90/mês</strong>
+                            </div>
+                            <div class="result-item extras" id="extrasContainer"></div>
+                            <div class="result-divider"></div>
+                            <div class="result-total">
+                                <span>Total Mensal:</span>
+                                <strong id="totalMonthly">R$ 59,90</strong>
+                            </div>
+                            <div class="result-onetime">
+                                <span>Ou Compra Única:</span>
+                                <strong id="totalOnetime">R$ 4.000,00</strong>
+                            </div>
+                        </div>
+                        <div class="result-features">
+                            <h4>Funcionalidades Selecionadas:</h4>
+                            <ul id="selectedFeatures">
+                                <li><i class="fas fa-check"></i> Agendamento Online</li>
+                                <li><i class="fas fa-check"></i> Firebase Authentication</li>
+                                <li><i class="fas fa-check"></i> Painel Administrativo</li>
+                                <li><i class="fas fa-check"></i> Até 2 profissionais</li>
+                            </ul>
+                        </div>
+                        <button class="btn-result" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">
+                            Solicitar Orçamento
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tire suas dúvidas sobre nossos serviços</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Qual a diferença entre os planos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O <strong>Plano Básico</strong> é ideal para começar, com funcionalidades essenciais de agendamento. O <strong>Plano Plus</strong> adiciona PDV/comandas, gestão financeira, e inclui hospedagem + domínio grátis. O <strong>Plano Pro</strong> é completo com automação via IA, integração WhatsApp, customização visual total e profissionais ilimitados.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Quanto tempo leva para desenvolver o sistema?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Para sistemas baseados em nossos templates (planos Básico e Plus), a entrega é de <strong>15 a 30 dias úteis</strong>. Para o Plano Pro com customizações totais, o prazo varia de <strong>30 a 60 dias</strong>, dependendo da complexidade das funcionalidades solicitadas. Trabalhamos para garantir qualidade e performance em cada projeto.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>O que está incluso na hospedagem e domínio?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nos planos Plus e Pro, fornecemos hospedagem em servidor de alta performance e registro de domínio <strong>.com ou .com.br</strong> gratuito pelo primeiro ano. Caso precise de outra extensão de domínio (.net, .org, etc.), será cobrado à parte. A partir do segundo ano, o cliente assume apenas o custo de renovação do domínio (aproximadamente R$ 40/ano).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Existe contrato de fidelidade?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, trabalhamos com <strong>contrato de 12 meses</strong> para proteger ambas as partes e garantir a continuidade do suporte e atualizações. Após o primeiro ano, você pode optar por renovar anualmente ou migrar para compra única. No modelo de compra única, o sistema é seu permanentemente, sem mensalidades.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Como funciona o suporte técnico?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Plano Básico: suporte por email em horário comercial (resposta em até 24h). Plano Plus: suporte prioritário por email e WhatsApp (resposta em até 12h). Plano Pro: suporte 24/7 por WhatsApp, email e telefone com resposta em até 2 horas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Posso migrar de plano depois?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Claro! Você pode fazer upgrade do seu plano a qualquer momento. Ao migrar para um plano superior, todas as funcionalidades anteriores são mantidas e as novas são ativadas. O valor é ajustado proporcionalmente no ciclo atual.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Vocês fazem integração com outros sistemas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! No Plano Pro oferecemos <strong>integrações customizadas</strong> com diversos serviços através de APIs. Já realizamos integrações com plataformas de WhatsApp (Evo API), automação (n8n), Firebase e outros sistemas. Consulte-nos para verificar a viabilidade da integração desejada para seu negócio.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>O sistema funciona offline?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nosso sistema é baseado em nuvem e requer conexão com internet. Porém, implementamos cache local para que funcionalidades básicas como visualização de agenda e registro de comandas funcionem temporariamente offline, sincronizando quando a conexão retornar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Meus dados estão seguros?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutamente! Utilizamos Firebase Authentication para autenticação segura, criptografia SSL/TLS em todas as conexões, e seguimos as melhores práticas de segurança da LGPD. Nos planos Plus e Pro, fazemos backup automático diário de todos os dados.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Preciso de conhecimentos técnicos para usar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! Desenvolvemos interfaces intuitivas e fáceis de usar. Além disso, fornecemos treinamento completo para você e sua equipe, com vídeos tutoriais e documentação passo a passo. Nosso suporte está sempre disponível para ajudar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Equipe -->
     <section id="equipe" class="equipe">
         <div class="container">
@@ -304,7 +786,7 @@
                                 <a href="https://github.com/EoDaniel777" target="_blank" class="social-btn" title="GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://github.com/EoDaniel777" target="_blank" class="social-btn" title="LinkedIn">
+                                <a href="https://www.linkedin.com/in/danielalisom/" target="_blank" class="social-btn" title="LinkedIn">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </div>
@@ -328,7 +810,7 @@
                                 <a href="https://github.com/B-Evil" target="_blank" class="social-btn" title="GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://github.com/B-Evil" target="_blank" class="social-btn" title="LinkedIn">
+                                <a href="https://www.linkedin.com/in/bruno-santiago-code0071/" target="_blank" class="social-btn" title="LinkedIn">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </div>
@@ -352,7 +834,7 @@
                                 <a href="https://github.com/Thaysantzs" target="_blank" class="social-btn" title="GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://github.com/Thaysantzs" target="_blank" class="social-btn" title="LinkedIn">
+                                <a href="https://www.linkedin.com/in/thiagosantiagodev/" target="_blank" class="social-btn" title="LinkedIn">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </div>
@@ -388,7 +870,7 @@
                         <p>Atendemos todo o Brasil</p>
                     </div>
                 </div>
-                <form class="contato-form" id="contactForm" action="https://formsubmit.co/gonextsolutions.contato@gmail.com" method="POST">
+                <form class="contato-form" id="contactForm" action="https://formsubmit.co/gonextsolutions.contato@gmail.com" method="POST" aria-label="Formulário de contato">
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" name="_subject" value="Nova mensagem do site GoNext Tecnologia">
                     <input type="hidden" name="_captcha" value="false">
@@ -412,7 +894,7 @@
                         <label for="mensagem">Mensagem *</label>
                         <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
+                    <button type="submit" class="btn btn-primary btn-block" aria-label="Enviar mensagem de contato">Enviar Mensagem</button>
                 </form>
             </div>
         </div>
@@ -432,7 +914,9 @@
                     <h4>Links Rápidos</h4>
                     <a href="#sobre">Sobre</a>
                     <a href="#cases">Cases</a>
-                    <a href="#equipe">Equipe</a>
+                    <a href="#precos">Preços</a>
+                    <a href="#calculadora">Calculadora</a>
+                    <a href="#faq">FAQ</a>
                     <a href="#contato">Contato</a>
                 </div>
                 <div class="footer-social">
@@ -465,6 +949,70 @@
             <div class="popup-content">
                 <img src="docs/popup.png" alt="Promoção GoNext" class="popup-image">
             </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Chat Widget -->
+    <button class="whatsapp-float" id="whatsappButton" aria-label="Abrir chat de atendimento">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <!-- Chat Widget Modal -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <img src="docs/logo.png" alt="GoNext" class="chat-logo">
+                <div>
+                    <h4>GoNext Tecnologia</h4>
+                    <p class="chat-status"><i class="fas fa-circle"></i> Online</p>
+                </div>
+            </div>
+            <button class="chat-close" id="chatClose" aria-label="Fechar chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-welcome">
+                <div class="chat-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="chat-bubble">
+                    <p>Olá! 👋</p>
+                    <p>Como podemos ajudar você hoje?</p>
+                    <small>Geralmente respondemos em poucos minutos</small>
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <form class="chat-form" id="chatForm" action="https://formsubmit.co/gonextsolutions.contato@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="Nova mensagem via Chat - GoNext Tecnologia">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" id="chatRedirect" value="">
+                <input type="text" name="_honey" style="display:none">
+
+                <input type="text"
+                       id="chatName"
+                       name="nome"
+                       placeholder="Seu nome"
+                       required
+                       class="chat-input">
+                <textarea id="chatMessage"
+                          name="mensagem"
+                          placeholder="Digite sua mensagem..."
+                          rows="3"
+                          required
+                          class="chat-textarea"></textarea>
+                <div class="chat-buttons">
+                    <button type="button" id="chatWhatsappBtn" class="chat-btn chat-btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+                    </button>
+                    <button type="submit" id="chatEmailBtn" class="chat-btn chat-btn-email">
+                        <i class="fas fa-envelope"></i> Enviar por Email
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
