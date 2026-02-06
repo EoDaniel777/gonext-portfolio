@@ -1926,6 +1926,313 @@ html {
     animation: fadeIn 0.6s ease-out;
 }
 
+/* Seção de Depoimentos */
+.depoimentos {
+    padding: 5rem 0;
+    background: var(--bg-white);
+}
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 600px) {
+    .depoimentos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.depoimento-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.depoimento-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.depoimento-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+}
+
+.depoimento-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.depoimento-card:hover .depoimento-image {
+    transform: scale(1.05);
+}
+
+.depoimento-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.depoimento-quote {
+    position: absolute;
+    top: -20px;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: var(--shadow-md);
+}
+
+.depoimento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+}
+
+.depoimento-info {
+    flex: 1;
+}
+
+.depoimento-nome {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.depoimento-empresa {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.depoimento-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-left: 1rem;
+}
+
+.depoimento-rating i {
+    color: #fbbf24;
+    font-size: 1.1rem;
+}
+
+.depoimento-rating i.far {
+    color: #e5e7eb;
+}
+
+.depoimento-texto {
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    text-align: justify;
+}
+
+.depoimento-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid var(--secondary-color);
+    align-self: flex-start;
+}
+
+.depoimento-badge i {
+    font-size: 1rem;
+}
+
+/* Stats dos Depoimentos */
+.depoimentos-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--secondary-color);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Responsive Depoimentos */
+@media (max-width: 1024px) {
+    .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .depoimentos {
+        padding: 3rem 0;
+    }
+
+    .depoimento-card {
+        border-radius: 15px;
+    }
+
+    .depoimento-image-wrapper {
+        height: 200px;
+    }
+
+    .depoimento-content {
+        padding: 1.5rem;
+    }
+
+    .depoimento-quote {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        right: 1.5rem;
+    }
+
+    .depoimento-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .depoimento-rating {
+        margin-left: 0;
+    }
+
+    .depoimento-nome {
+        font-size: 1.25rem;
+    }
+
+    .depoimento-empresa {
+        font-size: 0.9rem;
+    }
+
+    .depoimento-texto {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .depoimentos-stats {
+        gap: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .depoimento-content {
+        padding: 1.25rem;
+    }
+
+    .depoimento-nome {
+        font-size: 1.1rem;
+    }
+
+    .depoimento-texto {
+        font-size: 0.9rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
 /* Seção de Preços */
 .precos {
     padding: 5rem 0;

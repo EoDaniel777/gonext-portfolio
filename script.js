@@ -133,7 +133,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observa elementos para animação
-document.querySelectorAll('.feature-card, .case-card, .team-member, .info-card').forEach(el => {
+document.querySelectorAll('.feature-card, .case-card, .team-member, .info-card, .depoimento-card, .stat-card').forEach(el => {
     observer.observe(el);
 });
 
