@@ -490,10 +490,14 @@ section{padding:5.5rem 0}
 
 .chat-widget{
   position:fixed;bottom:92px;right:24px;z-index:1500;width:360px;max-width:calc(100vw - 32px);
+  max-height:calc(100dvh - 108px);display:flex;flex-direction:column;
   background:var(--surface-solid);border:1px solid var(--ink);box-shadow:var(--shadow);
   opacity:0;visibility:hidden;transform:translateY(16px);transition:.22s;
 }
 .chat-widget.active{opacity:1;visibility:visible;transform:translateY(0)}
+.chat-header{flex:none}
+.chat-body{flex:0 1 auto;overflow-y:auto;min-height:0}
+.chat-footer{flex:none}
 .chat-header{display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--ink);color:var(--paper)}
 .chat-header-content{display:flex;align-items:center;gap:.7rem}
 .chat-logo{height:32px;width:auto;background:#fff;padding:3px;border-radius:2px}
@@ -517,7 +521,8 @@ section{padding:5.5rem 0}
   font-family:var(--font-body);font-size:.9rem;margin-bottom:.6rem;color:var(--ink);
 }
 .chat-input:focus,.chat-textarea:focus{outline:none;border-color:var(--teal)}
-.chat-textarea{resize:vertical}
+/* Sem resize manual: a altura cresce sozinha via JS conforme o texto. */
+.chat-textarea{resize:none;overflow-y:auto;min-height:2.6rem;max-height:9rem;line-height:1.4}
 .chat-buttons{display:flex;flex-direction:column;gap:.5rem}
 .chat-btn{
   font-family:var(--font-mono);font-size:.82rem;padding:.7rem;border:1px solid var(--ink);cursor:pointer;
@@ -610,6 +615,18 @@ section{padding:5.5rem 0}
   .option-grid{grid-template-columns:1fr}
   .whatsapp-float{bottom:16px;right:16px}
   .chat-widget{bottom:82px;right:16px}
+}
+
+/* Telas de pouca altura (ex.: celular deitado): compacta o chat para que
+   os campos e os botões de envio continuem sempre visíveis. */
+@media(max-height:560px){
+  .chat-header{padding:.6rem 1rem}
+  .chat-body{display:none}          /* saudação é dispensável quando o espaço é curto */
+  .chat-footer{padding:.7rem}
+  .chat-input,.chat-textarea{margin-bottom:.4rem}
+  .chat-textarea{max-height:3rem}
+  .chat-buttons{gap:.4rem}
+  .chat-btn{padding:.55rem}
 }
 
 /* ============================================================

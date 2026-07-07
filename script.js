@@ -408,6 +408,15 @@ const chatClose = document.getElementById('chatClose');
 const chatForm = document.getElementById('chatForm');
 const chatWhatsappBtn = document.getElementById('chatWhatsappBtn');
 const chatEmailBtn = document.getElementById('chatEmailBtn');
+const chatMessageField = document.getElementById('chatMessage');
+
+// Auto-crescimento da caixa de mensagem conforme o usuário digita
+// (o CSS limita a altura máxima; ao atingir o limite, aparece a barra de rolagem)
+function autoGrowChat() {
+    chatMessageField.style.height = 'auto';
+    chatMessageField.style.height = chatMessageField.scrollHeight + 'px';
+}
+chatMessageField.addEventListener('input', autoGrowChat);
 
 // Toggle chat widget
 whatsappButton.addEventListener('click', () => {
@@ -447,6 +456,7 @@ chatWhatsappBtn.addEventListener('click', () => {
     setTimeout(() => {
         chatWidget.classList.remove('active');
         chatForm.reset();
+        autoGrowChat(); // volta a caixa de mensagem à altura inicial
         chatWhatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp';
     }, 1500);
 });
