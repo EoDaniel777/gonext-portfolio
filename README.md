@@ -11,7 +11,7 @@ Site institucional completo desenvolvido para apresentar os serviços, planos, c
 - **HTML5** - Estrutura semântica e acessível
 - **CSS3** - Variáveis CSS, Grid, Flexbox e Media Queries avançadas
 - **JavaScript (Vanilla ES6+)** - Interatividade sem dependências
-- **Google Fonts** - Tipografia Inter
+- **Google Fonts** - Space Grotesk (títulos), IBM Plex Sans (corpo) e IBM Plex Mono (labels)
 - **Font Awesome 6.5.1** - Ícones profissionais
 - **Devicon 2.15.1** - Ícones de tecnologias
 - **FormSubmit** - Serviço de envio de emails do formulário
@@ -32,14 +32,15 @@ gonext-portfolio/
 
 ### Cores
 
-As cores principais podem ser alteradas no arquivo `styles.css` nas variáveis CSS:
+O site usa o design **Blueprint** (papel técnico + grid de projeto), com a paleta derivada da marca. As cores principais podem ser alteradas no arquivo `styles.css` nas variáveis CSS:
 
 ```css
 :root {
-    --primary-color: #667eea;    /* Cor principal */
-    --secondary-color: #10b981;  /* Cor secundária */
-    --text-dark: #1a202c;        /* Texto escuro */
-    --text-light: #4a5568;       /* Texto claro */
+    --teal: #0E9CAD;       /* Cor da marca (destaque) */
+    --teal-deep: #0A7C89;  /* Teal escuro (hover/links) */
+    --ink: #20272A;        /* Grafite (texto/bordas) */
+    --paper: #EDF1F1;      /* Fundo (papel técnico) */
+    --amber: #D98A2B;      /* Acento pontual */
 }
 ```
 
@@ -56,8 +57,10 @@ Você pode editar o conteúdo diretamente no arquivo `index.html`:
 
 A logo da empresa está localizada em `docs/logo.png` e é utilizada:
 - No cabeçalho (navbar)
-- Na seção hero (com animação flutuante)
 - No rodapé (footer)
+- No widget de chat (WhatsApp)
+
+> A seção hero exibe um esquema do fluxo de agendamento (schematic), não a logo.
 
 Para substituir a logo, basta substituir o arquivo `docs/logo.png` mantendo o mesmo nome.
 
@@ -94,7 +97,7 @@ git push -u origin main
 
 ### Design e UX
 - ✅ Design responsivo profissional (mobile, tablet, desktop)
-- ✅ 7 breakpoints para responsividade perfeita
+- ✅ Layout fluido com proteção contra estouro horizontal
 - ✅ Animações suaves ao scroll e hover effects
 - ✅ Menu mobile com hamburger animado
 - ✅ Navegação suave entre seções
@@ -186,8 +189,8 @@ git push -u origin main
 
 ## 📝 Checklist de Implementação
 
-- [x] Design profissional com ícones interativos
-- [x] Responsividade completa (7 breakpoints)
+- [x] Design profissional (identidade visual Blueprint)
+- [x] Responsividade completa (mobile, tablet, desktop)
 - [x] Seção de preços com 3 planos
 - [x] Toggle assinatura/compra única
 - [x] Calculadora de preço interativa

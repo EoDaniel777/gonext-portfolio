@@ -41,10 +41,10 @@
     <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" as="style">
 
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Devicon for Technology Icons -->
@@ -82,8 +82,9 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <span class="eyebrow">Estúdio de software · sistemas sob medida</span>
                     <h1 class="hero-title">
-                        Soluções tecnológicas que impulsionam seu negócio
+                        Construímos o sistema que faz seu negócio rodar sozinho
                     </h1>
                     <p class="hero-subtitle">
                         Desenvolvemos sistemas sob medida para diversos segmentos. Especialistas em agendamento
@@ -109,8 +110,28 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="hero-illustration">
-                        <img src="docs/logo.png" alt="GoNext Tecnologia" class="hero-logo">
+                    <div class="schema" aria-label="Esquema do fluxo de agendamento">
+                        <span class="schema-corner sc-tl"></span><span class="schema-corner sc-tr"></span>
+                        <span class="schema-corner sc-bl"></span><span class="schema-corner sc-br"></span>
+                        <div class="node">
+                            <span class="node-dot"></span>
+                            <div><div class="node-lbl">ENTRADA</div><div class="node-val">Cliente agenda online</div></div>
+                        </div>
+                        <div class="node-wire"></div>
+                        <div class="node">
+                            <span class="node-dot"></span>
+                            <div><div class="node-lbl">PROCESSO</div><div class="node-val">Horário reservado, sem conflito</div></div>
+                        </div>
+                        <div class="node-wire"></div>
+                        <div class="node">
+                            <span class="node-dot"></span>
+                            <div><div class="node-lbl">AÇÃO</div><div class="node-val">Confirmação automática</div></div>
+                        </div>
+                        <div class="node-wire"></div>
+                        <div class="node node-ok">
+                            <span class="node-dot"></span>
+                            <div><div class="node-lbl">SAÍDA</div><div class="node-val">Lembrete no WhatsApp</div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -413,7 +434,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-trophy"></i></div>
                     <div class="stat-content">
-                        <div class="stat-value">2+</div>
+                        <div class="stat-value">5+</div>
                         <div class="stat-label">Anos de Experiência</div>
                     </div>
                 </div>
